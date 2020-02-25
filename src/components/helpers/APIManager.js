@@ -23,7 +23,8 @@ export default {
 
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Token ${Settings.token_name}`, 
+                // 'Authorization': `Token ${sessionStorage.getItem(Settings.token_name)}`, 
+                'Authorization': `Token ac58ef5c623f6fd7579bc68193a740060cb63df0`, 
             },
         })
     .then(response => response.json())
@@ -33,7 +34,8 @@ export default {
 
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Token ${Settings.token_name}`, 
+                // 'Authorization': `Token ${sessionStorage.getItem(Settings.token_name)}`, 
+                'Authorization': `Token ac58ef5c623f6fd7579bc68193a740060cb63df0`, 
             },
         })
     .then(response => response.json())
