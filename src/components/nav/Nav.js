@@ -10,6 +10,7 @@ export default function nav() {
                 <li><Link to=''>Sell</Link></li>
                 <li><Link to=''>My Products</Link></li>
                 <li><Link to=''>Reports</Link></li>
+                <li><Link to='/orders'>Orders</Link></li>
                 <li><Link to=''>Recommendations</Link></li>
                 <li><Link to=''>Favorites</Link></li>
                 <li><Link to=''>Shopping Cart</Link></li>
