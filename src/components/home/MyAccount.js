@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PaymentList from './PaymentList'
 import CustomerList from './CustomerList'
 import APIManager from '../helpers/APIManager'
+import { Link } from 'react-router-dom';
 
 export default function MyAccount(props) {
 
@@ -30,6 +31,7 @@ export default function MyAccount(props) {
   return (
         <>
           <main className="profile">
+            <Link to="/paymenttype/new">Add New Payment Type</Link>
             <CustomerList {...props} customers={customers} />
             <PaymentList {...props} payments={payments}/>
           </main>
