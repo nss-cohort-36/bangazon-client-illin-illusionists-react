@@ -1,7 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { isAuthenticated, logout } from '../helpers/simpleAuth'
 
-export default function nav() {
+export default function Nav() {
+    const history = useHistory()
+    const handleLogout = () => {
+        logout()
+        history.push('/')
+    }
+
+    const buttonStyle = {
+        border: 'none',
+        background: 'none', 
+        textDecoration: 'underline'
+    }
+
     return (
         <>
             <ul>
@@ -13,8 +26,11 @@ export default function nav() {
                 <li><Link to=''>Recommendations</Link></li>
                 <li><Link to=''>Favorites</Link></li>
                 <li><Link to=''>Shopping Cart</Link></li>
-                <li><Link to='/register'>Register</Link></li>
-                <li><Link to='/login'>Login</Link></li>
+                {isAuthenticated() ? <li><button style={buttonStyle} onClick={handleLogout}>Logout</button></li> :
+                <>
+                    <li><Link to='/register'>Register</Link></li>
+                    <li><Link to='/login'>Login</Link></li>
+                </>}
             </ul>   
         </>
     )
