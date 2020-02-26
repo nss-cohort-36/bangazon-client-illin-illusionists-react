@@ -28,8 +28,11 @@ export default function Register() {
 
         console.log('new_user', new_user)
         // Make fetch call with the object as the body of the POST request
-        register(new_user).then(history.push('/'))
-
+        register(new_user).then(response => {
+          if (response === true){
+            history.push('/')
+          }
+        });
     }
 
     return (

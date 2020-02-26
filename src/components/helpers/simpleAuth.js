@@ -18,6 +18,7 @@ const login = credentials => {
         console.log('login', response)
         if ('valid' in response && response.valid && 'token' in response) {
             sessionStorage.setItem(Settings.token_name, response.token)
+            return true
         }
     })
 }
@@ -36,6 +37,7 @@ const register = userInfo => {
         console.log('register', response)
         if ('token' in response){
             sessionStorage.setItem(Settings.token_name, response.token)
+            return true
         }
     })
 }

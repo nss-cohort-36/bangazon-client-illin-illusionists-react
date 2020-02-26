@@ -23,9 +23,12 @@ export default function Login() {
 			password: user.password
 		};
 
-		console.log('login_user', credentials);
 		// Make fetch call with the object as the body of the POST request
-		login(credentials).then(history.push('/'));
+		login(credentials).then(response => {
+			if (response === true){
+				history.push('/')
+			}
+		});
 	};
 	return (
 		<main style={{ textAlign: 'center' }}>
