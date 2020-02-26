@@ -42,10 +42,6 @@ export default {
 				Authorization: `Token ${sessionStorage.getItem(Settings.token_name)}`
 			},
 			body: JSON.stringify(data)
-		})
-			.then((response) => response.json())
-			.then((response) => {
-				console.log('api', response);
-			});
+		}).then((response) => response.json());
 	}
 };

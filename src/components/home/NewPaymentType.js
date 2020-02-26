@@ -11,21 +11,22 @@ export default function NewPaymentType() {
         setNewPayment({
             ...newPayment,
             [evt.target.id]: evt.target.value
-        }, console.log(newPayment))
+        })
     }
 
     const handleNewPayment = evt => {
         evt.preventDefault()
         const expiration = new Date(newPayment.expiration_date)
-        console.log('expiration', expiration);
+        // console.log('expiration', expiration);
         
         const addPayment = {
             acct_no: newPayment.acct_no,
             merchant_name: newPayment.merchant_name,
             expiration_date: expiration.toISOString()
         }
-        console.log('payment', JSON.stringify(addPayment))
+        // console.log('payment', JSON.stringify(addPayment))
         APIManager.postOne('paymenttypes', addPayment)
+            .then(history.push('/myaccount'))
         return
     }
     return (
