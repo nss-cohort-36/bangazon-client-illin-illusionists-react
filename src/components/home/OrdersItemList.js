@@ -4,7 +4,7 @@ import Order from './OrderItem';
 export default class OrdersList extends Component {
     
     state = {
-        ordersCollection: []
+        orders: []
     }
     
     componentDidMount(){
@@ -15,13 +15,16 @@ export default class OrdersList extends Component {
         fetch('http://localhost:8000/orders', {
             "method": "GET",
             "headers": {
-                "Accept": "application/json",
-                "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
+                "Accept": "application/json"
+                // "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
             }
         })
+        .then(response => response.json())
+        .then(response => this.setState({orders:response}))
     }
     
     render() {
+        console.log('ORDERS STATE', this.state.orders);
         return (
         <div>
             <div className="orders-item-list-container">
