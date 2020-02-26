@@ -3,6 +3,8 @@ import { Route } from 'react-router-dom'
 import Home from './home/Home'
 import OrderProductList from './home/OrderProductList'
 import ProductList from './home/ProductList'
+import Register from './auth/Register'
+import Login from './auth/Login'
 
 export default function ApplicationViews() {
     return (
@@ -15,6 +17,12 @@ export default function ApplicationViews() {
            }}/>
            <Route path="/myproducts" render={props=> {
                return <ProductList {...props} />
+           }} />
+           <Route path="/register" render={props => {
+               return <Register {...props} />
+           }}/>
+           <Route path="/login" render={props => {
+               return <Login {...props} />
            }}/>
         </>
     )

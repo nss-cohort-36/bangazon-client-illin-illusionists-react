@@ -1,7 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { isAuthenticated, logout } from '../helpers/simpleAuth'
 
-export default function nav() {
+export default function Nav() {
+    
+    // refresh the view after user logs out
+    const history = useHistory()
+    const handleLogout = () => {
+        logout()
+        history.push('/')
+    }
+
     return (
         <>
             <ul>
@@ -13,8 +22,11 @@ export default function nav() {
                 <li><Link to=''>Recommendations</Link></li>
                 <li><Link to=''>Favorites</Link></li>
                 <li><Link to=''>Shopping Cart</Link></li>
-                <li><Link to=''>Register</Link></li>
-                <li><Link to=''>Login</Link></li>
+                {isAuthenticated() ? <li><Link to='' onClick={handleLogout}>Logout</Link></li> :
+                <>
+                    <li><Link to='/register'>Register</Link></li>
+                    <li><Link to='/login'>Login</Link></li>
+                </>}
             </ul>   
         </>
     )
