@@ -15,7 +15,7 @@ const login = credentials => {
     })
     .then(response => response.json())
     .then(response => {
-        console.log('login', response)
+        // console.log('login', response)
         if ('valid' in response && response.valid && 'token' in response) {
             sessionStorage.setItem(Settings.token_name, response.token)
             return true
@@ -32,9 +32,15 @@ const register = userInfo => {
         },
         body: JSON.stringify(userInfo)
     })
-    .then(response => response.json())
     .then(response => {
-        console.log('register', response)
+        if (response.status === 500){
+            window.alert('Username taken. Please use a differe one.')
+        }
+        // console.log(response)
+        return response.json()
+    })
+    .then(response => {
+        // console.log('register', response)
         if ('token' in response){
             sessionStorage.setItem(Settings.token_name, response.token)
             return true

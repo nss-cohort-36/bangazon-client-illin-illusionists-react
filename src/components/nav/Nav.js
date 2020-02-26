@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom'
 import { isAuthenticated, logout } from '../helpers/simpleAuth'
 
 export default function Nav() {
+    
+    // refresh the view after user logs out
     const history = useHistory()
     const handleLogout = () => {
         logout()

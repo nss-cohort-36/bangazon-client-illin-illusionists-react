@@ -7,9 +7,10 @@ export default function Register() {
     const [user, setUser] = useState()
     const history = useHistory()
 
+    // capture all the form fields usings the custom hook to target each unique key
     const handleInputChange = evt => {
         setUser({
-            ...user,
+            ...user, // hooks are greedy; have to use spread operator to keep previous vals
             [evt.target.id]: evt.target.value
         })
     }
@@ -26,7 +27,7 @@ export default function Register() {
             "password": user.password
           }
 
-        console.log('new_user', new_user)
+        // console.log('new_user', new_user)
         // Make fetch call with the object as the body of the POST request
         register(new_user).then(response => {
           if (response === true){

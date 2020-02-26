@@ -28,8 +28,10 @@ export default function Login() {
 			if (response === true){
 				history.push('/')
 			}
+			else window.alert('Username/password combination do not exist')
 		});
 	};
+	
 	return (
 		<main style={{ textAlign: 'center' }}>
 			<form className="form--login" onSubmit={handleLogin}>
