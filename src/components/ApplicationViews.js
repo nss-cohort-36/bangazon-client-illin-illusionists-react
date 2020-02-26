@@ -3,11 +3,12 @@ import { Route } from 'react-router-dom'
 import Home from './home/Home'
 import Register from './auth/Register'
 import Login from './auth/Login'
+import NewPaymentType from './home/NewPaymentType'
 
 export default function ApplicationViews() {
     return (
         <>
-           <Route path="/" render={props=> {
+           <Route exact path="/" render={props=> {
                return <Home {...props} />
            }}/>
            <Route path="/register" render={props => {
@@ -15,6 +16,9 @@ export default function ApplicationViews() {
            }}/>
            <Route path="/login" render={props => {
                return <Login {...props} />
+           }}/>
+           <Route path="/paymenttype/new" render={props => {
+               return <NewPaymentType {...props} />
            }}/>
         </>
     )
