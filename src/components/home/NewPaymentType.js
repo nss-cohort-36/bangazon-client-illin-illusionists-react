@@ -42,7 +42,8 @@ export default function NewPaymentType() {
 						name="merchant_name"
 						className="form-control"
 						placeholder="VISA/MasterCard/etc."
-						required
+                        required
+                        autoFocus
 					/>
 				</fieldset>
                 <fieldset>
@@ -56,7 +57,6 @@ export default function NewPaymentType() {
                         pattern="[0-9]{16}"
 						placeholder="Enter 16-digit card #"
 						required
-						autoFocus
 					/>
 				</fieldset>
 				<fieldset>
