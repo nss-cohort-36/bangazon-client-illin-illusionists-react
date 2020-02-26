@@ -64,7 +64,8 @@ export default function NewPaymentType() {
 						onChange={handleInputChange}
 						id="expiration_date"
 						type="month"
-						name="expiration_date"
+                        name="expiration_date"
+                        min={new Date().toISOString().split('T')[0].slice(0,7)}
 						className="form-control"
 						required
 					/>
