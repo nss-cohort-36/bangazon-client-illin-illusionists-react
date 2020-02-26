@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 export default function ProductFormSell() {
@@ -71,10 +71,16 @@ export default function ProductFormSell() {
                     onChange={handleFieldChange} />
                     </fieldset>
                     <fieldset>
-                        
-                    <label></label>
-                    <input 
-                    onChange={handleFieldChange} />
+                    <label htmlFor="product_type_id">Product Type</label>
+                            <select
+                            className="form-control"
+                            id="product_type_id"
+                            onChange={this.handleFieldChange}
+                            >
+                                {this.state.employees.map(employee =>
+                                <option key={employee.id} value={employee.name}>{employee.name}</option>
+                            )}
+                            </select>    
                     </fieldset>  
                     <button onClick={handleSubmit}>Submit</button>
                 </form>
