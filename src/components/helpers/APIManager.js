@@ -23,8 +23,7 @@ export default {
 
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': `Token ${sessionStorage.getItem(Settings.token_name)}`, 
-                'Authorization': `Token ac58ef5c623f6fd7579bc68193a740060cb63df0`, 
+                'Authorization': `Token ${sessionStorage.getItem(Settings.token_name)}`, 
             },
         })
     .then(response => response.json())
@@ -34,9 +33,19 @@ export default {
 
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': `Token ${sessionStorage.getItem(Settings.token_name)}`, 
-                'Authorization': `Token ac58ef5c623f6fd7579bc68193a740060cb63df0`, 
+                'Authorization': `Token ${sessionStorage.getItem(Settings.token_name)}`,
             },
+        })
+    .then(response => response.json())
+    },
+    createNew(endpoint, newItem) {
+        return fetch(`${Settings.remote_URL}/${endpoint}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${sessionStorage.getItem(Settings.token_name)}`,
+            },
+            body: JSON.stringify(newItem)
         })
     .then(response => response.json())
     }

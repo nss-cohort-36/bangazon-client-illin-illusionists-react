@@ -1,10 +1,23 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import APIManager from '../helpers/APIManager'
 
 export default function ProductFormSell() {
     const [product, setProduct] = useState()
+    const [producttype, setProducttype] = useState([])
     const history = useHistory()
+
+
+    const getProductTypes = () => {
+        APIManager.getAll('producttypes')
+            .then(response => {
+                setProducttype(response)
+            })
+    }
+
+    console.log(producttype)
+    useEffect(getProductTypes, [])
 
     // Grab values from form fields and set to state
     const handleFieldChange = event => {
@@ -14,18 +27,24 @@ export default function ProductFormSell() {
         })
     }
 
+
+
     const handleSubmit = event => {
-        event.preventdefault()
+        console.log("handleSubmit is executing")
+        event.preventDefault()
 
         const newproduct = {
             "name": product.name,
-            "price": product.price,
+            "price": Number(product.price),
             "description": product.description,
-            "quantity": product.quantity,
+            "quantity": Number(product.quantity),
             "location": product.location,
             "image_path": product.image_path,
-            "product_type_id": product.product_type_id
+            "product_type_id": Number(product.product_type_id)
         }
+
+        APIManager.createNew('products', newproduct)
+
     }
 
     return (
@@ -33,57 +52,57 @@ export default function ProductFormSell() {
             <main>
                 <form>
                     <fieldset>
-                    <label htmlFor="name">Product Name</label>
-                    <input 
-                    onChange={handleFieldChange}
-                    id="name"
-                    />
+                        <label htmlFor="name">Product Name</label>
+                        <input
+                            onChange={handleFieldChange}
+                            id="name"
+                        />
                     </fieldset>
                     <fieldset>
-                    <label htmlFor="price">Price</label>
-                    <input 
-                    onChange={handleFieldChange}
-                    id="price"
-                    Price />
+                        <label htmlFor="price">Price</label>
+                        <input
+                            onChange={handleFieldChange}
+                            id="price"
+                        />
                     </fieldset>
                     <fieldset>
-                    <label htmlFor="description">Description</label>
-                    <input id="description" 
-                    onChange={handleFieldChange}
-                    Description />
+                        <label htmlFor="description">Description</label>
+                        <input id="description"
+                            onChange={handleFieldChange}
+                        />
                     </fieldset>
                     <fieldset>
-                    <label htmlFor="quantity">Quantity</label>
-                    <input
-                    id="quantity" 
-                    onChange={handleFieldChange} />
+                        <label htmlFor="quantity">Quantity</label>
+                        <input
+                            id="quantity"
+                            onChange={handleFieldChange} />
                     </fieldset>
                     <fieldset>
-                    <label htmlFor="location">Location</label>
-                    <input 
-                    id="location"
-                    onChange={handleFieldChange} />
+                        <label htmlFor="location">Location</label>
+                        <input
+                            id="location"
+                            onChange={handleFieldChange} />
                     </fieldset>
                     <fieldset>
-                    <label htmlFor="image_path">Image Path</label>
-                    <input 
-                    id="image_path"
-                    onChange={handleFieldChange} />
+                        <label htmlFor="image_path">Image Path</label>
+                        <input
+                            id="image_path"
+                            onChange={handleFieldChange} />
                     </fieldset>
                     <fieldset>
-                    <label htmlFor="product_type_id">Product Type</label>
-                            <select
+                        <label htmlFor="product_type_id">Product Type</label>
+                        <select
                             className="form-control"
                             id="product_type_id"
-                            onChange={this.handleFieldChange}
-                            >
-                                {this.state.employees.map(employee =>
-                                <option key={employee.id} value={employee.name}>{employee.name}</option>
+                            onChange={handleFieldChange}
+                        >
+                            {producttype.map(type =>
+                                <option key={type.id} value={type.id}>{type.name}</option>
                             )}
-                            </select>    
-                    </fieldset>  
-                    <button onClick={handleSubmit}>Submit</button>
+                        </select>
+                    </fieldset>
                 </form>
+                <button onClick={handleSubmit}>Submit</button>
             </main>
         </>
     )
