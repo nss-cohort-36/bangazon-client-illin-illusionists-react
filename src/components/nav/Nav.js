@@ -13,8 +13,8 @@ export default function nav() {
                 <li><Link to=''>Recommendations</Link></li>
                 <li><Link to=''>Favorites</Link></li>
                 <li><Link to=''>Shopping Cart</Link></li>
-                <li><Link to=''>Register</Link></li>
-                <li><Link to=''>Login</Link></li>
+                <li><Link to='/register'>Register</Link></li>
+                <li><Link to='/login'>Login</Link></li>
             </ul>   
         </>
     )
