@@ -1,0 +1,20 @@
+.header-container{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+ul.orders-item-list{
+    list-style-type: none;
+    width: 60%;
+    margin: auto;
+}   
+
+.orders-item-list-container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 72%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
