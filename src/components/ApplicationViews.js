@@ -2,6 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import Home from './home/Home'
 import OrdersItemList from './home/OrdersItemList'
+import MyAccount from './home/MyAccount'
 import Register from './auth/Register'
 import Login from './auth/Login'
 
@@ -15,6 +16,12 @@ export default function ApplicationViews() {
            <Route path="/orders" render={props=> {
                return <OrdersItemList {...props} />
            }}/>
+           {/* path to customer profile */}
+           <Route path="/myaccount" render={props=> {
+               return <MyAccount {...props} />
+           }}/>
+
+           
            <Route path="/register" render={props => {
                return <Register {...props} />
            }}/>
