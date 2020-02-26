@@ -34,7 +34,7 @@ const register = userInfo => {
     })
     .then(response => {
         if (response.status === 500){
-            window.alert('Username taken. Please use a differe one.')
+            window.alert('Username taken. Please use a different one.')
         }
         // console.log(response)
         return response.json()
