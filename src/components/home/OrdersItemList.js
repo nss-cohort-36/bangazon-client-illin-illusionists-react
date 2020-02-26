@@ -25,7 +25,7 @@ export default class OrdersList extends Component {
     }
     
     render() {
-        console.log('ORDERS STATE', this.state.orders.created_at);
+        console.log('ORDERS STATE', this.state);
         return (
         <div>
             <div className="header-container">
