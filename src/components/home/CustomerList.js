@@ -2,6 +2,7 @@ import React from 'react'
 import Customer from './Customer'
 
 export default function CustomerList(props) {
+
     return (
       <>
         <article className="customerList">

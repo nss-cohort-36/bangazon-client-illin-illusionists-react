@@ -19,9 +19,7 @@ export default function MyAccount(props) {
   const getCustomers = () => {
     //get current user
     APIManager.getAll('customers')
-    .then((response) => {
-      console.log(response)
-      return setCustomers()})
+    .then(setCustomers)
     
   }
 // useEffect like a superpowered componentDidMount; getPayments runs; dependency array with multiple variables or functions
@@ -32,8 +30,8 @@ export default function MyAccount(props) {
   return (
         <>
           <main className="profile">
-            {/* <CustomerList {...props} customers={customers} />
-            <PaymentList {...props} payments={payments}/> */}
+            <CustomerList {...props} customers={customers} />
+            <PaymentList {...props} payments={payments}/>
           </main>
         </>
   )
