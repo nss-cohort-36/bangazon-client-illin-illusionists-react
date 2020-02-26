@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import APIManager from '../helpers/APIManager'
 
 export default function NewPaymentType() {
 
@@ -15,13 +16,16 @@ export default function NewPaymentType() {
 
     const handleNewPayment = evt => {
         evt.preventDefault()
+        const expiration = new Date(newPayment.expiration_date)
+        console.log('expiration', expiration);
         
         const addPayment = {
             acct_no: newPayment.acct_no,
             merchant_name: newPayment.merchant_name,
-            expiration_date: newPayment.expiration_date
+            expiration_date: expiration.toISOString()
         }
-        console.log('payment', addPayment)
+        console.log('payment', JSON.stringify(addPayment))
+        APIManager.postOne('paymenttypes', addPayment)
         return
     }
     return (
@@ -47,8 +51,9 @@ export default function NewPaymentType() {
 						id="acct_no"
 						type="text"
 						name="acct_no"
-						className="form-control"
-						placeholder="0000111122223333"
+                        className="form-control"
+                        pattern="[0-9]{16}"
+						placeholder="Enter 16-digit card #"
 						required
 						autoFocus
 					/>
