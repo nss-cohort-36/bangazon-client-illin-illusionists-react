@@ -8,7 +8,6 @@ import MyAccount from './home/MyAccount'
 import Register from './auth/Register'
 import Login from './auth/Login'
 import ProductFormSell from './home/ProductFormSell'
-import MyAccount from './home/MyAccount'
 import NewPaymentType from './home/NewPaymentType'
 
 export default function ApplicationViews() {
