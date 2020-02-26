@@ -16,7 +16,7 @@ export default function Nav() {
             <ul>
                 <li><Link to=''>Home</Link></li>
                 <li><Link to=''>Profile</Link></li>
-                <li><Link to=''>Sell</Link></li>
+                <li><Link to='/sell'>Sell</Link></li>
                 <li><Link to=''>My Products</Link></li>
                 <li><Link to=''>Reports</Link></li>
                 <li><Link to=''>Recommendations</Link></li>

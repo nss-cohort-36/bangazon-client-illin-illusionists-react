@@ -5,11 +5,12 @@ import OrderProductList from './home/OrderProductList'
 import ProductList from './home/ProductList'
 import Register from './auth/Register'
 import Login from './auth/Login'
+import ProductFormSell from './home/ProductFormSell'
 
 export default function ApplicationViews() {
     return (
         <>
-           <Route path="/" render={props=> {
+           <Route exact path="/" render={props=> {
                return <Home {...props} />
            }}/>
            <Route path="/orderproduct" render={props=> {
@@ -23,6 +24,9 @@ export default function ApplicationViews() {
            }}/>
            <Route path="/login" render={props => {
                return <Login {...props} />
+           }}/>
+           <Route path="/sell" render={props => {
+               return <ProductFormSell {...props} />
            }}/>
         </>
     )
