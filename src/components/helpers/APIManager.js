@@ -23,7 +23,7 @@ export default {
 
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Token ${Settings.temp_token}`, 
+                'Authorization': `Token ${Settings.token_name}`, 
             },
         })
     .then(response => response.json())
@@ -33,7 +33,7 @@ export default {
 
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Token ${Settings.temp_token}`, 
+                'Authorization': `Token ${Settings.token_name}`, 
             },
         })
     .then(response => response.json())
