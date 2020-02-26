@@ -19,6 +19,7 @@ export default function Nav() {
                 <li><Link to='/sell'>Sell</Link></li>
                 <li><Link to='/myproducts'>My Products</Link></li>
                 <li><Link to=''>Reports</Link></li>
+                <li><Link to='/orders'>Orders</Link></li>
                 <li><Link to=''>Recommendations</Link></li>
                 <li><Link to=''>Favorites</Link></li>
                 <li><Link to=''>Shopping Cart</Link></li>

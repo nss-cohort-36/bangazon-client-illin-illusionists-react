@@ -1,0 +1,13 @@
+.order-card {
+    font-family: 'Helvetica-Neue', sans-serif;
+    border: 2px solid red;
+    border-radius: 15pt;
+    width: 60%;
+    margin: 32px 0px 32px 0px;
+    padding: 8px;
+}
+
+.order-card-body {
+    background-color: #C9CAC4;
+    margin: 26px;
+}

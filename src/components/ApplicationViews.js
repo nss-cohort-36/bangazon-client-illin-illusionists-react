@@ -3,6 +3,8 @@ import { Route } from 'react-router-dom'
 import Home from './home/Home'
 import OrderProductList from './home/OrderProductList'
 import ProductList from './home/ProductList'
+import OrdersItemList from './home/OrdersItemList'
+import MyAccount from './home/MyAccount'
 import Register from './auth/Register'
 import Login from './auth/Login'
 import ProductFormSell from './home/ProductFormSell'
@@ -22,6 +24,9 @@ export default function ApplicationViews() {
                return <ProductList {...props} />
            }} />
 
+           <Route path="/orders" render={props=> {
+               return <OrdersItemList {...props} />
+           }}/>
            {/* path to customer profile */}
            <Route path="/myaccount" render={props=> {
                return <MyAccount {...props} />
