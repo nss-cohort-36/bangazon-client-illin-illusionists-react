@@ -24,6 +24,7 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Token ${Settings.token_name}`, 
+                // 'Authorization': 'Token d3e304a9d5dda53a9100d83c1a3f106ca54d4e26'
             },
         })
     .then(response => response.json())
