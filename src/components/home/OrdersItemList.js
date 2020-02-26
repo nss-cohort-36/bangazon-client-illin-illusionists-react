@@ -24,13 +24,16 @@ export default class OrdersList extends Component {
     }
     
     render() {
-        console.log('ORDERS STATE', this.state.orders);
+        console.log('ORDERS STATE', this.state.orders.created_at);
         return (
         <div>
             <div className="orders-item-list-container">
                 <ul className="orders-item-list">
                     <li className="orders-item-list-item">
-                        <Order/> 
+                        { this.state.orders.map(order => 
+                            <Order key={order.id} url={order.url} created={order.created_at}/> 
+                        )
+                        }
                     </li>
                 </ul>
             </div>

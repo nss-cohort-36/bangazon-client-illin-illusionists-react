@@ -11,8 +11,10 @@ export default function ApplicationViews() {
            <Route path="/" render={props=> {
                return <Home {...props} />
            }}/>
+
            <Route path="/orders" render={props=> {
                return <OrdersItemList {...props} />
+           }}/>
            <Route path="/register" render={props => {
                return <Register {...props} />
            }}/>
