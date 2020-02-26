@@ -9,12 +9,6 @@ export default function Nav() {
         history.push('/')
     }
 
-    const buttonStyle = {
-        border: 'none',
-        background: 'none', 
-        textDecoration: 'underline'
-    }
-
     return (
         <>
             <ul>
@@ -26,7 +20,7 @@ export default function Nav() {
                 <li><Link to=''>Recommendations</Link></li>
                 <li><Link to=''>Favorites</Link></li>
                 <li><Link to=''>Shopping Cart</Link></li>
-                {isAuthenticated() ? <li><button style={buttonStyle} onClick={handleLogout}>Logout</button></li> :
+                {isAuthenticated() ? <li><Link to='' onClick={handleLogout}>Logout</Link></li> :
                 <>
                     <li><Link to='/register'>Register</Link></li>
                     <li><Link to='/login'>Login</Link></li>
