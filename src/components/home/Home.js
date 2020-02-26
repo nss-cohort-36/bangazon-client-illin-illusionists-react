@@ -7,7 +7,7 @@ export default function Home() {
     const [productList, setProductList] = useState([]);
 
     const getProductList = () => {
-        APIManager.getAll('products')
+        APIManager.getAll('products?limit=20')
                 .then(setProductList)
         };
 
