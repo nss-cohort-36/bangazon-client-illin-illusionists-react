@@ -23,12 +23,7 @@ export default {
 
             headers: {
                 'Content-Type': 'application/json',
-<<<<<<< HEAD
-                'Authorization': `Token ${Settings.token_name}`, 
-                // 'Authorization': 'Token d3e304a9d5dda53a9100d83c1a3f106ca54d4e26'
-=======
                 'Authorization': `Token ${sessionStorage.getItem(Settings.token_name)}`, 
->>>>>>> master
             },
         })
     .then(response => response.json())
