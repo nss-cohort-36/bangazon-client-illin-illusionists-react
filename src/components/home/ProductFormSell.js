@@ -72,7 +72,7 @@ export default function ProductFormSell() {
                     </fieldset>
                     <fieldset>
                         <label htmlFor="price">Price</label>
-                        <input
+                        <input type="number" pattern="^([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|10000)$"
                             onChange={handleFieldChange}
                             id="price"
                         />
