@@ -6,6 +6,7 @@ import APIManager from '../helpers/APIManager'
 export default function ProductFormSell() {
     const [product, setProduct] = useState()
     const [producttype, setProducttype] = useState([])
+    const [productDetail, setProductDetail] = useState([])
     const history = useHistory()
 
 
@@ -16,7 +17,6 @@ export default function ProductFormSell() {
             })
     }
 
-    console.log(producttype)
     useEffect(getProductTypes, [])
 
     // Grab values from form fields and set to state
@@ -42,9 +42,18 @@ export default function ProductFormSell() {
                 "image_path": product.image_path,
                 "product_type_id": Number(product.product_type_id)
             }
-    
-            APIManager.createNew('products', newproduct)
 
+            APIManager.createNew('products', newproduct)
+            .then(response => 
+                APIManager.getOne('products', response.id)
+                )
+            .then(response => {
+            console.log(response)
+            setProductDetail(response)
+            }
+            )
+            console.log("product detail", productDetail)
+            // history.push(`/products/${productDetail.id}`)
         } 
 
     }

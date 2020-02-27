@@ -9,6 +9,7 @@ import Register from './auth/Register'
 import Login from './auth/Login'
 import ProductFormSell from './home/ProductFormSell'
 import NewPaymentType from './home/NewPaymentType'
+import ProductDetail from './home/ProductDetail'
 
 export default function ApplicationViews() {
     return (
@@ -21,6 +22,9 @@ export default function ApplicationViews() {
            }}/>
            <Route path="/myproducts" render={props=> {
                return <ProductList {...props} />
+           }} />
+           <Route path="/products/:productId(\d+)" render={props=> {
+               return <ProductDetail {...props} />
            }} />
 
            <Route path="/orders" render={props=> {
