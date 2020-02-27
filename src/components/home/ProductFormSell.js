@@ -30,20 +30,22 @@ export default function ProductFormSell() {
 
 
     const handleSubmit = event => {
-        console.log("handleSubmit is executing")
+        // console.log("handleSubmit is executing")
         event.preventDefault()
+        if (product && product.name && product.price && product.description && product.quantity && product.location && product.image_path && product.product_type_id) {
+            const newproduct = {
+                "name": product.name,
+                "price": Number(product.price),
+                "description": product.description,
+                "quantity": Number(product.quantity),
+                "location": product.location,
+                "image_path": product.image_path,
+                "product_type_id": Number(product.product_type_id)
+            }
+    
+            APIManager.createNew('products', newproduct)
 
-        const newproduct = {
-            "name": product.name,
-            "price": Number(product.price),
-            "description": product.description,
-            "quantity": Number(product.quantity),
-            "location": product.location,
-            "image_path": product.image_path,
-            "product_type_id": Number(product.product_type_id)
-        }
-
-        APIManager.createNew('products', newproduct)
+        } 
 
     }
 
