@@ -10,7 +10,7 @@
         * This simple animation will change the background color of the card slowly.
     */
     background: linear-gradient(128deg, #FFA850, #56CFE8);
-    animation: whole-card 15s ease infinite;
+    animation: whole-card 10s ease infinite;
 }
 
 @keyframes whole-card{
@@ -20,6 +20,12 @@
 }
 
 .order-card-body {
-    background-color: #C9CAC4;
     margin: 26px;
+}
+
+.order-card-description {
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

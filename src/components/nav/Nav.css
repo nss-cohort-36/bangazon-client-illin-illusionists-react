@@ -1,0 +1,22 @@
+.nav-container {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: lightgray;
+}
+
+.nav-list {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+
+}
+
+.nav-list-item{
+    color: red;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    color: red;
+}
