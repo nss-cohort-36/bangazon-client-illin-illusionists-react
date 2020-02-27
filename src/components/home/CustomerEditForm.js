@@ -2,6 +2,7 @@ import React, { useState, Component } from 'react'
 import { useHistory } from 'react-router-dom'
 import APIManager from '../helpers/APIManager'
 import Settings from '../helpers/Settings';
+import './CustomerEditForm.css'
 
 class CustomerEditForm extends Component {
 
@@ -57,19 +58,19 @@ class CustomerEditForm extends Component {
 
   render() {
     return (
-      <>
-        <label htmlFor="first_name">First Name {this.state.first_name}</label><br />
-        <label htmlFor="last_name">Last Name   </label>
-        <input
+      <div className="form-container">
+        <label className="form-label" htmlFor="first_name">First Name {this.state.first_name}</label><br />
+        <label className="form-label" htmlFor="last_name">Last Name   </label>
+        <input className="form-input"
           onChange={this.handleInputChange}
           type="text" name="last_name"
           value={this.state.last_name} 
           autoFocus required />< br/>
-        <label htmlFor="email">Email         {this.state.email}</label><br />
-        <label htmlFor="username">Username   {this.state.username}</label><br />
+        <label className="form-label" htmlFor="email">Email         {this.state.email}</label><br />
+        <label className="form-label" htmlFor="username">Username   {this.state.username}</label><br />
 
-        <button onClick={this.updateCustomer}>Update Customer</button>
-      </>
+        <button className="form-button" onClick={this.updateCustomer}>Update Customer</button>
+      </div>
     )
   }
 }

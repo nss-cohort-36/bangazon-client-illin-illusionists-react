@@ -1,0 +1,16 @@
+.form-container {
+    padding: 24px;
+}
+
+.form-label {
+    margin: 8pt 0pt 8pt 0pt;
+}
+
+.form-button {
+    height: 32pt;
+    background: linear-gradient(128deg, #B3FFD6, #D5FFF3);
+    border-radius: 8px;
+    margin-top: 16pt;
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.15);
+
+}
