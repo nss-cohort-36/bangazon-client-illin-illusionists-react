@@ -25,7 +25,7 @@ export default function NewPaymentType() {
             expiration_date: expiration.toISOString()
         }
         // console.log('payment', JSON.stringify(addPayment))
-        APIManager.postOne('paymenttypes', addPayment)
+        APIManager.createNew('paymenttypes', addPayment)
             .then(history.push('/myaccount'))
         return
     }
