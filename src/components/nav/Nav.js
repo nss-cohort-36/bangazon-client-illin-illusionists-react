@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { isAuthenticated, logout } from '../helpers/simpleAuth'
+import './Nav.css'
 
 export default function Nav() {
     
@@ -9,26 +10,26 @@ export default function Nav() {
     const handleLogout = () => {
         logout()
         history.push('/')
-    }
+    }   
 
     return (
-        <>
-            <ul>
-                <li><Link to=''>Home</Link></li>
-                <li><Link to='/myaccount'>Profile</Link></li>
-                <li><Link to='/sell'>Sell</Link></li>
-                <li><Link to='/myproducts'>My Products</Link></li>
-                <li><Link to=''>Reports</Link></li>
-                <li><Link to='/orders'>Orders</Link></li>
-                <li><Link to=''>Recommendations</Link></li>
-                <li><Link to=''>Favorites</Link></li>
-                <li><Link to=''>Shopping Cart</Link></li>
-                {isAuthenticated() ? <li><Link to='' onClick={handleLogout}>Logout</Link></li> :
+        <div className="nav-container">
+            <ul className="nav-list">
+                <li className="nav-list-item"><NavLink activeClassName="active-link" to='/' exact>Home</NavLink></li>
+                <li className="nav-list-item"><NavLink activeClassName="active-link" to='/myaccount'>Profile</NavLink></li>
+                <li className="nav-list-item"><NavLink activeClassName="active-link" to='/sell'>Sell</NavLink></li>
+                <li className="nav-list-item"><NavLink activeClassName="active-link" to='/myproducts'>My Products</NavLink></li>
+                <li className="nav-list-item"><NavLink activeClassName="active-link" to='/reports'>Reports</NavLink></li>
+                <li className="nav-list-item"><NavLink activeClassName="active-link" to='/orders'>Orders</NavLink></li>
+                <li className="nav-list-item"><NavLink activeClassName="active-link" to='/reccomendations'>Recommendations</NavLink></li>
+                <li className="nav-list-item"><NavLink activeClassName="active-link" to='/favorites'>Favorites</NavLink></li>
+                <li className="nav-list-item"><NavLink activeClassName="active-link" to='/cart'>Shopping Cart</NavLink></li>
+                {isAuthenticated() ? <li className="nav-list-item"><NavLink to='' onClick={handleLogout}>Logout</NavLink></li> :
                 <>
-                    <li><Link to='/register'>Register</Link></li>
-                    <li><Link to='/login'>Login</Link></li>
+                    <li className="nav-list-item"><NavLink activeClassName="active-link" to='/register'>Register</NavLink></li>
+                    <li className="nav-list-item"><NavLink activeClassName="active-link" to='/login'>Login</NavLink></li>
                 </>}
             </ul>   
-        </>
+        </div>
     )
 }

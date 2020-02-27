@@ -1,0 +1,27 @@
+.form-container {
+    padding: 24px;
+}
+
+.form-label {
+    margin: 8pt 0pt 8pt 0pt;
+    color: #336699;
+    font-family: 'Helvetica-Neue', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.form-button {
+    height: 32pt;
+    background: linear-gradient(128deg, #B3FFD6, #D5FFF3);
+    border-radius: 8px;
+    margin-top: 16pt;
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.15);
+}
+
+.form-desc {
+    margin-top: 0pt;
+}
+
+input {
+    margin-bottom: 16pt;
+}
