@@ -9,6 +9,7 @@ import Register from './auth/Register'
 import Login from './auth/Login'
 import ProductFormSell from './home/ProductFormSell'
 import NewPaymentType from './home/NewPaymentType'
+import CustomerEditForm from './home/CustomerEditForm'
 import ProductDetail from './home/ProductDetail'
 
 export default function ApplicationViews() {
@@ -34,6 +35,12 @@ export default function ApplicationViews() {
            <Route path="/myaccount" render={props=> {
                return <MyAccount {...props} />
            }}/>
+            <Route path="/customers/:customerId(\d+)/edit" render={props => {
+            console.log(props)
+            return <CustomerEditForm {...props} />
+            }}
+            />
+           
            <Route path="/register" render={props => {
                return <Register {...props} />
            }}/>

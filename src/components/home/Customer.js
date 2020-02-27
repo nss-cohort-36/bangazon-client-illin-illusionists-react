@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Customer(props) {
     return (
@@ -7,6 +8,7 @@ export default function Customer(props) {
                 <h3>{props.customer.user.first_name}<br />
                 {props.customer.user.last_name}<br />
                 {props.customer.user.email}</h3>
+              <Link to={`/customers/${props.customer.id}/edit`}>Edit Customer</Link>            
             </section>
         </React.Fragment>
     )
