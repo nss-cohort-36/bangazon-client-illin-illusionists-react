@@ -5,6 +5,18 @@
     width: 60%;
     margin: 32px 0px 32px 0px;
     padding: 8px;
+
+    /* Animation Properties 
+        * This simple animation will change the background color of the card slowly.
+    */
+    background: linear-gradient(128deg, #FFA850, #56CFE8);
+    animation: whole-card 15s ease infinite;
+}
+
+@keyframes whole-card{
+    0% {background-position: 0% 50%}
+    50% {background-position: 100% 50%}
+    100% {background-position: 0% 50%}
 }
 
 .order-card-body {
