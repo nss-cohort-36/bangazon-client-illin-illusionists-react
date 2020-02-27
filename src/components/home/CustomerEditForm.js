@@ -27,17 +27,17 @@ class CustomerEditForm extends Component {
     .then(item => {
       console.log(item)
         this.setState({
-          first_name: item.user.first_name,
-          last_name: item.user.last_name,
-          email: item.user.email,
-          username: item.user.username
+          first_name: item.first_name,
+          last_name: item.last_name,
+          email: item.email,
+          username: item.username
         })
     })
   }
 
   updateCustomer = () => {
-    fetch(`http://localhost:8000/user/${this.props.match.params.customerId}`, {
-      "method": "PUT",
+    fetch(`http://localhost:8000/users/${this.props.match.params.customerId}`, {
+      "method": "PATCH",
       "headers": {
           "Accept": "application/json",
           "Content-Type": "application/json",
