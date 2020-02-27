@@ -12,6 +12,7 @@ export default function PaymentList(props) {
               <Payment
                 key={payment.id}                
                 payment={payment}
+                deletePayment={props.deletePayment}
               />)
           }
         </article>

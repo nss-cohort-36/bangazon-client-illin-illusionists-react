@@ -48,6 +48,14 @@ export default {
             body: JSON.stringify(newItem)
         })
     .then(response => response.json())
+    },
+    deleteOne(endpoint, id){
+        return fetch(`${Settings.remote_URL}/${endpoint}/${id}`,{
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${sessionStorage.getItem(Settings.token_name)}`,
+            }})
     }
     }
 
