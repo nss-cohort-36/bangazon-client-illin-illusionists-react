@@ -35,15 +35,12 @@ export default function ApplicationViews() {
            <Route path="/myaccount" render={props=> {
                return <MyAccount {...props} />
            }}/>
-<<<<<<< HEAD
             <Route path="/customers/:customerId(\d+)/edit" render={props => {
             console.log(props)
             return <CustomerEditForm {...props} />
             }}
             />
            
-=======
->>>>>>> master
            <Route path="/register" render={props => {
                return <Register {...props} />
            }}/>

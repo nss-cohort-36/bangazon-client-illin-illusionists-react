@@ -37,7 +37,7 @@ class CustomerEditForm extends Component {
 
   updateCustomer = () => {
     fetch(`http://localhost:8000/user/${this.props.match.params.customerId}`, {
-      "method": "PATCH",
+      "method": "PUT",
       "headers": {
           "Accept": "application/json",
           "Content-Type": "application/json",
