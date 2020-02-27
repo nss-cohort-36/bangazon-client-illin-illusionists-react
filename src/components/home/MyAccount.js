@@ -24,17 +24,21 @@ export default function MyAccount(props) {
     .then(setCustomers)
     
   }
+
+  const deletePayment = id => {
+    APIManager.deleteOne('paymenttypes', id)
+  }
 // useEffect like a superpowered componentDidMount; getPayments runs; dependency array with multiple variables or functions
-  useEffect(getPayments, []);
+  useEffect(getPayments, [deletePayment]);
   useEffect(getCustomers, []);
 
 
   return (
         <>
           <main className="profile">
-            <Link to="/paymenttype/new">Add New Payment Type</Link>
             <CustomerList {...props} customers={customers} />
-            <PaymentList {...props} payments={payments}/>
+            <Link to="/paymenttype/new">Add New Payment Type</Link>
+            <PaymentList {...props} payments={payments} deletePayment={deletePayment}/>
             <OrdersItemList {...props}/> 
           </main>
         </>
