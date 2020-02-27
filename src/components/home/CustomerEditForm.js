@@ -68,7 +68,7 @@ class CustomerEditForm extends Component {
   render() {
     return (
       <div className="form-container">
-        <label className="form-label" htmlFor="first_name">First Name </label>
+        <label className="form-label" htmlFor="first_name">First Name</label>
         <p className="form-desc" id="first_name"> {this.state.first_name}</p><br />
         
         <label className="form-label" htmlFor="last_name">Last Name</label>

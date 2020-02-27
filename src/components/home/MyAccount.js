@@ -29,7 +29,7 @@ export default function MyAccount(props) {
     APIManager.deleteOne('paymenttypes', id)
   }
 // useEffect like a superpowered componentDidMount; getPayments runs; dependency array with multiple variables or functions
-  useEffect(getPayments, [deletePayment]);
+  useEffect(getPayments, []);
   useEffect(getCustomers, []);
 
 

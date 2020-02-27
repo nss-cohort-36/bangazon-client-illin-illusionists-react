@@ -5,13 +5,21 @@ export default function Customer(props) {
     return (
         <React.Fragment>
             <section className="profile">
-                <h3>First Name {props.customer.user.first_name}<br />
-                Last Name {props.customer.user.last_name}<br />
-                Email {props.customer.user.email}<br />
-                Address {props.customer.address}<br />
-                City {props.customer.city}<br />
-                Phone {props.customer.phone}</h3>
-              <Link to={`/customers/${props.customer.id}/edit`}>Edit Customer</Link>            
+                <label className="form-label">First Name</label>
+                <p className="form-desc">{props.customer.user.first_name}</p>
+                <label className="form-label">Last Name</label>
+                <p className="form-desc">{props.customer.user.last_name}</p>
+                <label className="form-label">Email</label>
+                <p className="form-desc">{props.customer.user.email}</p>
+                <label className="form-label">Address</label>
+                <p className="form-desc">{props.customer.address}</p>
+                <label className="form-label">City</label>
+                <p className="form-desc">{props.customer.city}</p>
+                <label className="form-label">Phone</label>
+                <p className="form-desc">{props.customer.phone}</p>
+              <Link to={`/customers/${props.customer.id}/edit`}>Edit Customer</Link> 
+              <br />
+              <br />           
             </section>
         </React.Fragment>
     )
