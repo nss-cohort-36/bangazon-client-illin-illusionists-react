@@ -1,12 +1,16 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Home from './home/Home'
+import OrderProductList from './home/OrderProductList'
+import ProductList from './home/ProductList'
 import OrdersItemList from './home/OrdersItemList'
 import MyAccount from './home/MyAccount'
 import Register from './auth/Register'
 import Login from './auth/Login'
+import ProductFormSell from './home/ProductFormSell'
 import NewPaymentType from './home/NewPaymentType'
 import CustomerEditForm from './home/CustomerEditForm'
+import ProductDetail from './home/ProductDetail'
 
 export default function ApplicationViews() {
     return (
@@ -14,6 +18,15 @@ export default function ApplicationViews() {
            <Route exact path="/" render={props=> {
                return <Home {...props} />
            }}/>
+           <Route path="/orderproduct" render={props=> {
+               return <OrderProductList {...props} />
+           }}/>
+           <Route path="/myproducts" render={props=> {
+               return <ProductList {...props} />
+           }} />
+           <Route path="/products/:productId(\d+)" render={props=> {
+               return <ProductDetail {...props} />
+           }} />
 
            <Route path="/orders" render={props=> {
                return <OrdersItemList {...props} />
@@ -22,17 +35,23 @@ export default function ApplicationViews() {
            <Route path="/myaccount" render={props=> {
                return <MyAccount {...props} />
            }}/>
+<<<<<<< HEAD
             <Route path="/customers/:customerId(\d+)/edit" render={props => {
             console.log(props)
             return <CustomerEditForm {...props} />
             }}
             />
            
+=======
+>>>>>>> master
            <Route path="/register" render={props => {
                return <Register {...props} />
            }}/>
            <Route path="/login" render={props => {
                return <Login {...props} />
+           }}/>
+           <Route path="/sell" render={props => {
+               return <ProductFormSell {...props} />
            }}/>
            <Route path="/paymenttype/new" render={props => {
                return <NewPaymentType {...props} />
