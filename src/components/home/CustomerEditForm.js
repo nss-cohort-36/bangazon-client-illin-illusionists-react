@@ -59,15 +59,22 @@ class CustomerEditForm extends Component {
   render() {
     return (
       <div className="form-container">
-        <label className="form-label" htmlFor="first_name">First Name {this.state.first_name}</label><br />
-        <label className="form-label" htmlFor="last_name">Last Name   </label>
+        <label className="form-label" htmlFor="first_name">First Name </label>
+        <p className="form-desc" id="first_name"> {this.state.first_name}</p><br />
+        
+        <label className="form-label" htmlFor="last_name">Last Name</label>
+        
         <input className="form-input"
           onChange={this.handleInputChange}
           type="text" name="last_name"
           value={this.state.last_name} 
           autoFocus required />< br/>
-        <label className="form-label" htmlFor="email">Email         {this.state.email}</label><br />
-        <label className="form-label" htmlFor="username">Username   {this.state.username}</label><br />
+        
+        <label className="form-label" htmlFor="email">Email</label> 
+        <p className="form-desc" id="email">{this.state.email}</p><br />
+        
+        <label className="form-label" htmlFor="username">Username </label> 
+        <p className="form-desc" id="username">{this.state.username}</p><br />
 
         <button className="form-button" onClick={this.updateCustomer}>Update Customer</button>
       </div>
