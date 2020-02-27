@@ -1,15 +1,28 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
+import APIManager from '../helpers/APIManager'
 
 export default function ProductDetail(props) {
+
+    const [productdetail, setProductDetail] = useState({
+        product_type: {}
+    })
+
+    useEffect(() => {
+        APIManager.getOne('products', props.match.params.productId)
+            .then(response => {
+                setProductDetail(response)
+            })
+    }, [])
     return (
         <>
-            <h1>{props.productdetail.name}</h1>
-            <p>{props.productdetail.price}</p>
-            <p>{props.productdetail.description}</p>
-            <p>{props.productdetail.quantity}</p>
-            <p>{props.productdetail.location}</p>
-            <p>{props.productdetail.image_path}</p>
-            {/* <p>{props.productdetail.product_type.name}</p> */}
+            <h1>{productdetail.name}</h1> 
+            <p>{productdetail.price}</p>
+            <p>{productdetail.description}</p>
+            <p>{productdetail.quantity}</p>
+            <p>{productdetail.location}</p>
+            <p>{productdetail.image_path}</p> 
+            <p>{productdetail.product_type.name}</p>
         </>
     )
 }

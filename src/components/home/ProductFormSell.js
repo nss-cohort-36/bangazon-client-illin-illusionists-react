@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import APIManager from '../helpers/APIManager'
-import ProductDetail from './ProductDetail'
+
 
 export default function ProductFormSell() {
     const [product, setProduct] = useState()
     const [producttype, setProducttype] = useState([])
-    const [productdetail, setProductDetail] = useState({})
+
     const history = useHistory()
 
 
@@ -45,19 +45,17 @@ export default function ProductFormSell() {
             }
 
             APIManager.createNew('products', newproduct)
-            .then(response => 
-                APIManager.getOne('products', response.id)
+                .then(response =>
+                    history.push(`/products/${response.id}`)
                 )
-            .then(response => {
-            console.log(response)
-            setProductDetail(response)
-            }
-            )
-            .then(console.log("product detail", productdetail),
-            console.log("product detail id", productdetail.id)
-            )
-            // history.push(`/products/${productDetail.id}`)
-        } 
+                .then(response => {
+                    console.log(response)
+
+
+                }
+                )
+
+        }
 
     }
 
@@ -118,10 +116,6 @@ export default function ProductFormSell() {
                 </form>
                 <button onClick={handleSubmit}>Submit</button>
             </main>
-            
-            { productdetail && 
-            <ProductDetail productdetail={productdetail}/>
-            }
         </>
     )
 }
