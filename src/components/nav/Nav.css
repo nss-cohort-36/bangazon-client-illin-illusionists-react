@@ -1,7 +1,7 @@
 .nav-container {
     display: flex;
     flex-flow: row wrap;
-    background-color: lightgray;
+    background-color: #D5FFF3;
 }
 
 .nav-list {
@@ -12,11 +12,16 @@
 }
 
 .nav-list-item{
-    color: red;
     text-decoration: none;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
+    margin: 4pt;
 }
 
-.nav-link {
-    color: red;
+.active-link {
+    color: #F68F1E;
+}
+
+a {
+    color: #19657E;
+    text-decoration: none;
 }
