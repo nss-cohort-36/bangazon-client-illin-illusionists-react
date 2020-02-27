@@ -24,10 +24,10 @@ export default function Nav() {
                 <li className="nav-list-item"><NavLink activeClassName="active-link" to='/reccomendations'>Recommendations</NavLink></li>
                 <li className="nav-list-item"><NavLink activeClassName="active-link" to='/favorites'>Favorites</NavLink></li>
                 <li className="nav-list-item"><NavLink activeClassName="active-link" to='/cart'>Shopping Cart</NavLink></li>
-                {isAuthenticated() ? <li><NavLink activeClassName="active-link" to='' onClick={handleLogout}>Logout</NavLink></li> :
+                {isAuthenticated() ? <li className="nav-list-item"><NavLink to='' onClick={handleLogout}>Logout</NavLink></li> :
                 <>
-                    <li><NavLink activeClassName="active-link" to='/register'>Register</NavLink></li>
-                    <li><NavLink activeClassName="active-link" to='/login'>Login</NavLink></li>
+                    <li className="nav-list-item"><NavLink activeClassName="active-link" to='/register'>Register</NavLink></li>
+                    <li className="nav-list-item"><NavLink activeClassName="active-link" to='/login'>Login</NavLink></li>
                 </>}
             </ul>   
         </div>
