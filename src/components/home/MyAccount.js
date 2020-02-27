@@ -27,6 +27,7 @@ export default function MyAccount(props) {
 
   const deletePayment = id => {
     APIManager.deleteOne('paymenttypes', id)
+    .then(getPayments)
   }
 // useEffect like a superpowered componentDidMount; getPayments runs; dependency array with multiple variables or functions
   useEffect(getPayments, []);
