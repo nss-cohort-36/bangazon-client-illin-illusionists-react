@@ -1,13 +1,32 @@
 .order-card {
     font-family: 'Helvetica-Neue', sans-serif;
-    border: 2px solid red;
+    border: 2px solid #7A9E9F;
     border-radius: 15pt;
     width: 60%;
     margin: 32px 0px 32px 0px;
     padding: 8px;
+
+    /* Animation Properties 
+        * This simple animation will change the background color of the card slowly.
+    */
+    background: linear-gradient(128deg, #B3FFD6, #D5FFF3);
+    background-size: 100% 100%;
+    animation: whole-card 10s ease infinite;
+}
+
+@keyframes whole-card{
+    0% {background-position: 0% 50%}
+    50% {background-position: 100% 50%}
+    100% {background-position: 0% 50%}
 }
 
 .order-card-body {
-    background-color: #C9CAC4;
     margin: 26px;
+}
+
+.order-card-description {
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
