@@ -11,7 +11,9 @@ export default function CustomerList(props) {
               <Customer
                 key={customer.id}                
                 customer={customer}
-              />)
+              />
+
+            )
           }
         </article>
       </>
