@@ -23,7 +23,7 @@ export default function ProductFormSell() {
     const handleFieldChange = event => {
         
         if (event.target.id === "price") {
-            if (event.target.value > 0 && event.target.value <= 100000) {
+            if (event.target.value > 0 && event.target.value <= 10000) {
                 setProduct({
                     ...product,
                     [event.target.id]: event.target.value
