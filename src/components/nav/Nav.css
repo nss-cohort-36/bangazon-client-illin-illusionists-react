@@ -1,0 +1,27 @@
+.nav-container {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: #D5FFF3;
+}
+
+.nav-list {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+
+}
+
+.nav-list-item{
+    text-decoration: none;
+    /* text-transform: uppercase; */
+    margin: 4pt;
+}
+
+.active-link {
+    color: #F68F1E;
+}
+
+a {
+    color: #19657E;
+    text-decoration: none;
+}
