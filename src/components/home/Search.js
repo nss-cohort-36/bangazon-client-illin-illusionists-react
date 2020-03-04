@@ -56,7 +56,8 @@ class Search extends Component {
   };
 
    async getAllProducts() {
-    const searched_products = await APIManager.getAll("products")
+    let query_string = ""
+    const searched_products = await APIManager.getAll(`products?location=${this.state.value}`)
     this.setState({ products: searched_products })
   }
 
