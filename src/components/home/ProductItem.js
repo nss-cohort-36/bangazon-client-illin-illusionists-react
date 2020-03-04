@@ -5,11 +5,21 @@ export default function ProductItem(props) {
     // Current Inventory
     // Products Sold
 
+    const productStyle = {
+      margin: '10px',
+      padding: '10px',
+      border: '0.5px solid grey',
+      borderRadius: '5px'
+    }
+
     return (
         <>
-          <p>{props.product.name}</p>   
-          <p>{props.product.quantity}</p>   
-          <p>{props.product.quantity}</p>   
+          <div style={productStyle}>
+            <p><strong>Item:</strong> {props.product.name}</p>   
+            <p><strong>Current Inventory:</strong> {props.product.quantity - props.stats}</p>
+            <p><strong># Sold:</strong> {props.stats}</p>
+            <button onClick={() => props.deleteProduct(props.product.id)}>Delete</button>
+          </div>
         </>
     )
 }
