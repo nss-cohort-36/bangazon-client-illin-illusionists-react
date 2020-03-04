@@ -1,13 +1,19 @@
 import React, { Component } from "react";
-import ProductItem from "./ProductItem";
+import ProductItem from "../products/ProductItem";
 import APIManager from "../helpers/APIManager";
 
 class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   state = {
     locations: [],
     search: "",
     value: "",
-    locations_with_user_input: []
+    products: []
   };
 
   componentDidMount() {
@@ -23,23 +29,23 @@ class Search extends Component {
         value: ""
       });
     });
-  };
+  }
 
-  handleInputChange = (evt) => {
-    let stateToChange = {}
-    stateToChange[evt.target.id] = evt.target.value
-    this.setState(stateToChange)
+  handleInputChange = evt => {
+    let stateToChange = {};
+    stateToChange[evt.target.id] = evt.target.value;
+    this.setState(stateToChange);
   };
 
   handleChange(event) {
-    console.log("Event", event)
-    // this.setState({ value: event.target.value });
-  };
+    console.log("Event", event);
+    this.setState({ value: event.target.value });
+  }
 
-  handleSubmit(event) {
-    alert("You chose: " + this.state.value);
+  async handleSubmit(event) {
     event.preventDefault();
-  };
+    await this.getAllProducts()
+  }
 
   filterList = event => {
     let items = this.state.initialItems;
@@ -49,16 +55,28 @@ class Search extends Component {
     this.setState({ items: items });
   };
 
+   async getAllProducts() {
+    const searched_products = await APIManager.getAll("products")
+    this.setState({ products: searched_products })
+  }
+
   render() {
     console.log(this.state);
     return (
+    <>
       <form onSubmit={this.handleSubmit}>
         <label>
-          <input type="text" id="search" onChange={this.handleInputChange}></input>
+          <input
+            type="text"
+            id="search"
+            onChange={this.handleInputChange}></input>
           Filter by location:
           <select value={this.state.value} onChange={this.handleChange}>
             {this.state.locations.map((location, index) => (
-              <option onClick={this.handleChange} key={index} value={location}>
+              <option
+                //   onClick={this.handleChange}
+                key={index}
+                value={location}>
                 {location}
               </option>
             ))}
@@ -66,6 +84,14 @@ class Search extends Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      <div>
+          {/* <ul> */}
+            {this.state.products.map((item) =>
+             <ProductItem key={item.id} item={item} />
+            // <div key ={item.id}>{item.name}</div>
+             )}
+          {/* </ul> */}
+          </div></>
     );
   }
 }
