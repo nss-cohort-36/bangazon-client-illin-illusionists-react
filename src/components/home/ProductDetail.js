@@ -1,17 +1,16 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import APIManager from '../helpers/APIManager'
+import { useHistory } from 'react-router-dom'
 
 export default function ProductDetail(props) {
 
 
-    // add product to order - logic check for open order if there is none  create it the can be only one
-    // from product details
-    // first write a get for order by customer where there is no attached payment type
-
     const [productdetail, setProductDetail] = useState({
         product_type: {}
     })
+
+    const history = useHistory()
 
     useEffect(() => {
         APIManager.getOne('products', props.match.params.productId)
@@ -19,6 +18,12 @@ export default function ProductDetail(props) {
                 setProductDetail(response)
             })
     }, [])
+
+    const AddItem = (id) => {
+        APIManager.createNew('orderproducts/cart', {"product_id": id})
+        .then(() => history.push("/orders"))
+    }
+
     return (
         <>
             <h1>{productdetail.name}</h1>
@@ -28,7 +33,7 @@ export default function ProductDetail(props) {
             <p>{productdetail.location}</p>
             <p>{productdetail.image_path}</p>
             <p>{productdetail.product_type.name}</p>
-            <button>Add Item to Cart</button>
+            <button onClick={() => AddItem(productdetail.id)}>Add Item to Cart</button>
         </>
     )
 }
