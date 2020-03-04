@@ -24,7 +24,11 @@ export default function ProductList() {
             })
     })}
 
-    const deleteProduct = id => APIManager.deleteOne('products', id).then(getCustomerProductList)
+    const deleteProduct = id => {
+        if (window.confirm('Are you sure you want to delete this item')){
+            APIManager.deleteOne('products', id).then(getCustomerProductList)
+        }
+    }
 
     useEffect(getCustomerProductList, [])
     useEffect(getOrderProducts, [productList])
