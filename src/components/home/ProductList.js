@@ -7,7 +7,7 @@ export default function ProductList() {
 
     const [ productList, setProductList ] = useState([])
     // new state to manage inventor and # items sold for each product
-    const [ productStats, setProductStats ] = useState([])
+    const [ productStats, setProductStats ] = useState({})
 
     // query param to only get the customer's products
     const getCustomerProductList = () => {
@@ -20,7 +20,9 @@ export default function ProductList() {
         productList.forEach((product, index) => {
             APIManager.getAll(`orderproducts?product=${product.id}`)
             .then((orderproducts) => {
-                setProductStats([...productStats, productStats[index] = orderproducts.length])
+                setProductStats(prevState => {
+                    return { ...prevState, [product.id]: orderproducts.length }
+                })
             })
     })}
 
@@ -33,25 +35,30 @@ export default function ProductList() {
     useEffect(getCustomerProductList, [])
     useEffect(getOrderProducts, [productList])
 
-    const listStyle = {
-        display: 'flex',
-        flexWrap: 'wrap'
-    }
-
     return (
         <>
             {productList.length === 0 && <p>No products</p>}
             <Link to="/sell" >Add a product to sell</Link>
-            <div style={listStyle}>
+            <table style={{ width: '50%', textAlign: 'center'}}>
+            <thead>
+              <tr>
+                  <td>Item</td>
+                  <td>Inventory</td>
+                  <td>Number Sold</td>
+                  <td>Actions</td>
+              </tr>
+            </thead>
+            <tbody>
                 {productList.map((product, index) => {
                     return <ProductItem 
                                 key={product.id} 
                                 product={product}
                                 deleteProduct={deleteProduct}
-                                stats={productStats[index]}/>
+                                stats={productStats[product.id]}/>
                     }
                 )}
-            </div>
+            </tbody>
+            </table>
         </>
     )
 }
