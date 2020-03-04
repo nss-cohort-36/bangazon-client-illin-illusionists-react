@@ -6,6 +6,7 @@ export default function ProductItem(props) {
     // Products Sold
 
     const productStyle = {
+      width: '200px',
       margin: '10px',
       padding: '10px',
       border: '0.5px solid grey',

@@ -33,18 +33,25 @@ export default function ProductList() {
     useEffect(getCustomerProductList, [])
     useEffect(getOrderProducts, [productList])
 
+    const listStyle = {
+        display: 'flex',
+        flexWrap: 'wrap'
+    }
+
     return (
         <>
             {productList.length === 0 && <p>No products</p>}
             <Link to="/sell" >Add a product to sell</Link>
-            {productList.map((product, index) => {
-                return <ProductItem 
-                            key={product.id} 
-                            product={product}
-                            deleteProduct={deleteProduct}
-                            stats={productStats[index]}/>
-                }
-            )}
+            <div style={listStyle}>
+                {productList.map((product, index) => {
+                    return <ProductItem 
+                                key={product.id} 
+                                product={product}
+                                deleteProduct={deleteProduct}
+                                stats={productStats[index]}/>
+                    }
+                )}
+            </div>
         </>
     )
 }
