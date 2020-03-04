@@ -42,10 +42,10 @@ export default function ProductList() {
             <table style={{ width: '50%', textAlign: 'center'}}>
             <thead>
               <tr>
-                  <td>Item</td>
-                  <td>Inventory</td>
-                  <td>Number Sold</td>
-                  <td>Actions</td>
+                  <td><strong>Item</strong></td>
+                  <td><strong>Inventory</strong></td>
+                  <td><strong>Number Sold</strong></td>
+                  <td><strong>Actions</strong></td>
               </tr>
             </thead>
             <tbody>
