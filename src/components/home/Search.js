@@ -3,12 +3,15 @@ import ProductItem from "../products/ProductItem";
 import APIManager from "../helpers/APIManager";
 
 class Search extends Component {
+
+// Binding is necessary to set the scope of whatever is passed in
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+// Setting state to hold property values. When state changes, component re-renders
   state = {
     locations: [],
     search: "",
@@ -47,14 +50,9 @@ class Search extends Component {
     await this.getAllProducts()
   }
 
-  filterList = event => {
-    let items = this.state.initialItems;
-    items = items.filter(item => {
-      return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
-    });
-    this.setState({ items: items });
-  };
-
+// Checking whether the value for location or search is not blank.
+// If not blank the value is pushed to the query_array.
+// query_array length is checked and if greater than 0 the value of query_array is appended to query_string with .join joining arguments if there are more than one.
    async getAllProducts() {
     let query_array = []
     let query_string = ""
@@ -67,13 +65,14 @@ class Search extends Component {
     if (query_array.length > 0) {
         query_string += `?${query_array.join("&")}`
     }
-    console.log("Query String", query_string)
+    // console.log("Query String", query_string)
     const searched_products = await APIManager.getAll(`products${query_string}`)
     this.setState({ products: searched_products })
   }
 
+// Form for filtering searches by location and/or product name
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
     <>
       <form onSubmit={this.handleSubmit}>
@@ -89,7 +88,6 @@ class Search extends Component {
               </option>
             {this.state.locations.map((location, index) => (
               <option
-                //   onClick={this.handleChange}
                 key={index}
                 value={location}>
                 {location}
@@ -100,13 +98,13 @@ class Search extends Component {
         <input type="submit" value="Submit" />
       </form>
       <div>
-          {/* <ul> */}
+          
             {this.state.products.map((item) =>
              <ProductItem key={item.id} item={item} />
-            // <div key ={item.id}>{item.name}</div>
              )}
-          {/* </ul> */}
-          </div></>
+          
+          </div>
+          </>
     );
   }
 }
