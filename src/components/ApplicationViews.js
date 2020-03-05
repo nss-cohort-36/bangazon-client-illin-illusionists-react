@@ -11,6 +11,7 @@ import ProductFormSell from './home/ProductFormSell'
 import NewPaymentType from './home/NewPaymentType'
 import CustomerEditForm from './home/CustomerEditForm'
 import ProductDetail from './home/ProductDetail'
+import OrderDetail from './home/OrderDetail'
 import { isAuthenticated } from './helpers/simpleAuth'
 
 export default function ApplicationViews() {
@@ -39,12 +40,19 @@ export default function ApplicationViews() {
                     return <Redirect to="/login" />
            }} />
 
-           <Route path="/orders" render={props=> {
+           <Route path="/orders" exact render={props=> {
                     if (isAuthenticated()){
                return <OrdersItemList {...props} />
                     }
                     return <Redirect to="/login" />
            }}/>
+
+           <Route path="/orders/:orderId(\d+)/complete" render={props=> {
+              if (isAuthenticated()){
+                return <OrderDetail {...props} />
+              }
+              return <Redirect to="/login" />
+            }}/>
            {/* path to customer profile */}
            <Route path="/myaccount" render={props=> {
                     if (isAuthenticated()){

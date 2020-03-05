@@ -10,11 +10,17 @@ export default class Order extends Component {
           <h4 className="order-card-heading">Created At</h4>
           <p className="order-card-description">{this.props.created}</p>
           <ol>
-            {this.props.products.map(product => (
-              <li key={product.id}><ProductItem product={product} /></li>
+            {this.props.products.map((product, index) => (
+              <li key={index}>
+                <ProductItem product={product} />
+              </li>
             ))}
           </ol>
-          <button className="order-card-complete-button">Complete Order</button>
+          <button
+            className="order-card-complete-button"
+            onClick={() => console.log("asdf")}>
+            Complete Order
+          </button>
           <button className="order-card-cancel-button">Cancel Order</button>
         </div>
       </div>
