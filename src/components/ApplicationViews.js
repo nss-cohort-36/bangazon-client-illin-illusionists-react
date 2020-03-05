@@ -12,6 +12,7 @@ import NewPaymentType from './home/NewPaymentType'
 import CustomerEditForm from './home/CustomerEditForm'
 import ProductDetail from './home/ProductDetail'
 import { isAuthenticated } from './helpers/simpleAuth'
+import Reports from './reports/Reports'
 
 export default function ApplicationViews() {
     return (
@@ -59,6 +60,13 @@ export default function ApplicationViews() {
                  return <Redirect to="/login" />
             }}
             />
+
+            <Route path="/reports" render={props => {
+                 if (isAuthenticated()){
+                      return <Reports {...props} />
+                 }
+                 return <Redirect to="/login" />
+            }}/>
            
            <Route path="/register" render={props => {
                return <Register {...props} />
