@@ -82,10 +82,11 @@ class Search extends Component {
     <>
       <form onSubmit={this.handleSubmit}>
         <label>
+        Search a product:
           <input
             type="text"
             id="search"
-            onChange={this.handleInputChange}></input>
+            onChange={this.handleInputChange}></input><br />
           Filter by location:
           <select value={this.state.location} onChange={this.handleChange}>
               <option value = "">
@@ -99,7 +100,7 @@ class Search extends Component {
               </option>
             ))}
           </select>
-        </label>
+        </label><br />
         <input type="submit" value="Submit" />
       </form>
       <div>
