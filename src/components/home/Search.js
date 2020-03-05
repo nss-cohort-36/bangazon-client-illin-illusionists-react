@@ -12,7 +12,7 @@ class Search extends Component {
   state = {
     locations: [],
     search: "",
-    value: "",
+    location: "",
     products: []
   };
 
@@ -26,7 +26,7 @@ class Search extends Component {
       const uniqueLocations = [...new Set(newLocations)].sort();
       this.setState({
         locations: uniqueLocations,
-        value: ""
+        location: ""
       });
     });
   }
@@ -39,7 +39,7 @@ class Search extends Component {
 
   handleChange(event) {
     console.log("Event", event);
-    this.setState({ value: event.target.value });
+    this.setState({ location: event.target.value });
   }
 
   async handleSubmit(event) {
@@ -56,8 +56,19 @@ class Search extends Component {
   };
 
    async getAllProducts() {
+    let query_array = []
     let query_string = ""
-    const searched_products = await APIManager.getAll(`products?location=${this.state.value}`)
+    if (this.state.location !== "") {
+        query_array.push(`location=${this.state.location}`)
+    }
+    if (this.state.search !== "") {
+        query_array.push(`name=${this.state.search}`)
+    }
+    if (query_array.length > 0) {
+        query_string += `?${query_array.join("&")}`
+    }
+    console.log("Query String", query_string)
+    const searched_products = await APIManager.getAll(`products${query_string}`)
     this.setState({ products: searched_products })
   }
 
@@ -72,7 +83,10 @@ class Search extends Component {
             id="search"
             onChange={this.handleInputChange}></input>
           Filter by location:
-          <select value={this.state.value} onChange={this.handleChange}>
+          <select value={this.state.location} onChange={this.handleChange}>
+              <option value = "">
+                  None Selected
+              </option>
             {this.state.locations.map((location, index) => (
               <option
                 //   onClick={this.handleChange}
