@@ -1,16 +1,29 @@
 import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { isAuthenticated, logout } from '../helpers/simpleAuth'
+import { useState, useEffect } from 'react'
+import APIManager from '../helpers/APIManager'
 import './Nav.css'
 
 export default function Nav() {
+
     
     // refresh the view after user logs out
     const history = useHistory()
     const handleLogout = () => {
         logout()
         history.push('/')
-    }   
+    }  
+    
+    
+    const [categories, setCategories] = useState([])
+
+    const getProductCategories = () => {
+        APIManager.getAll("producttypes")
+        .then(response => setCategories(response))
+    }
+
+    useEffect(getProductCategories, [])
 
     return (
         <div className="nav-container">
@@ -30,6 +43,20 @@ export default function Nav() {
                     <li className="nav-list-item"><NavLink activeClassName="active-link" to='/login'>Login</NavLink></li>
                 </>}
             </ul>   
+                <div>
+                    <ul>
+                        <label>Products</label>
+                        <select 
+                        id="product_type_id"
+                        // onChange={}
+                        >
+                            {categories.map(type =>
+                                    <option key={type.id} value={type.id}>{type.name}</option>
+                            )}
+                        </select>
+                <NavLink activeClassName="active-link" to='/productcategories'></NavLink>
+                    </ul>
+                </div>
         </div>
     )
 }
