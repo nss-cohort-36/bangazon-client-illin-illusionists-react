@@ -12,6 +12,7 @@ import NewPaymentType from './home/NewPaymentType'
 import CustomerEditForm from './home/CustomerEditForm'
 import ProductDetail from './home/ProductDetail'
 import { isAuthenticated } from './helpers/simpleAuth'
+import ProductTypeList from './home/ProductTypeList'
 
 export default function ApplicationViews() {
     return (
@@ -79,6 +80,12 @@ export default function ApplicationViews() {
                 return <Redirect to="/login" />
                
            }}/>
+           <Route path="/category/:productTypeId" render={props => {
+               if (isAuthenticated()){
+                return <ProductTypeList {...props} />
+               }
+               return <Redirect to="/login" />
+           }} />
         </>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink, useHistory, useParams } from 'react-router-dom'
 import { isAuthenticated, logout } from '../helpers/simpleAuth'
 import { useState, useEffect } from 'react'
 import APIManager from '../helpers/APIManager'
@@ -25,6 +25,9 @@ export default function Nav() {
 
     useEffect(getProductCategories, [])
 
+    const handleFieldChange = event => {
+        history.push(`/category/${event.target.value}`)
+    }
     return (
         <div className="nav-container">
             <ul className="nav-list">
@@ -48,10 +51,16 @@ export default function Nav() {
                         <label>Products</label>
                         <select 
                         id="product_type_id"
-                        // onChange={}
+                        onChange={handleFieldChange}
+                        value={history.location.pathname.split("/")[2]}
                         >
                             {categories.map(type =>
-                                    <option key={type.id} value={type.id}>{type.name}</option>
+                                    <option 
+                                    key={type.id} 
+                                    value={type.id}
+                                    >
+                                        {type.name}
+                                    </option>
                             )}
                         </select>
                 <NavLink activeClassName="active-link" to='/productcategories'></NavLink>
