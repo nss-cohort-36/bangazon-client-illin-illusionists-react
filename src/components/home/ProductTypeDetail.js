@@ -6,13 +6,9 @@ export default function ProductTypeDetail(props) {
 
     return (
         <div>
-            {props.products.map(product => {
-                return <>
-                <h3>{product.name}</h3>
-                <p>Quantity: {product.quantity}</p>
-                <p>Price: ${product.price}</p>
-                </>
-            })}
+            <h2>{props.type.name}</h2>
+            <p>Quantity: {props.type.quantity}</p>
+            <p>Price: ${props.type.price}</p>
         </div>
     )
 }

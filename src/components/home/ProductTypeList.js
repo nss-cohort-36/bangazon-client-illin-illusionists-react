@@ -18,9 +18,9 @@ export default function ProductTypeList(props) {
 
     return (
         <div>
-            
-            <ProductTypeDetail key={productType.id} products={productType} />
-           
+            {productType.map(type => {
+                return <ProductTypeDetail key={type.id} type={type} />
+            })}
         </div>
     )
 }
