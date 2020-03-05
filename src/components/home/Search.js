@@ -19,8 +19,10 @@ class Search extends Component {
     products: []
   };
 
+// componentDidMount gets executed when a component first loads.
+// locations are put into a new array of unique locations and sorted alphabetically.
   componentDidMount() {
-    console.log("SEARCH: ComponentDidMount");
+    // console.log("SEARCH: ComponentDidMount");
     APIManager.getAll("products").then(response => {
       const newLocations = [];
       for (const item of response) {
@@ -28,23 +30,25 @@ class Search extends Component {
       }
       const uniqueLocations = [...new Set(newLocations)].sort();
       this.setState({
-        locations: uniqueLocations,
-        location: ""
+        locations: uniqueLocations
       });
     });
   }
 
+// handleInputChange captures user input in the text field and puts it in state.
   handleInputChange = evt => {
     let stateToChange = {};
     stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
 
+// handleChange captures value from drop-down menu and puts it in state.
   handleChange(event) {
     console.log("Event", event);
     this.setState({ location: event.target.value });
   }
 
+// handleSubmit calls getAllProducts when form is submitted.
   async handleSubmit(event) {
     event.preventDefault();
     await this.getAllProducts()
