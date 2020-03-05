@@ -44,7 +44,7 @@ class Search extends Component {
 
 // handleChange captures value from drop-down menu and puts it in state.
   handleChange(event) {
-    console.log("Event", event);
+    // console.log("Event", event);
     this.setState({ location: event.target.value });
   }
 
