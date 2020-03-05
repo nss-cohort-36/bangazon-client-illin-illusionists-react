@@ -53,6 +53,7 @@ class Search extends Component {
 // Checking whether the value for location or search is not blank.
 // If not blank the value is pushed to the query_array.
 // query_array length is checked and if greater than 0 the value of query_array is appended to query_string with .join joining arguments if there are more than one.
+// query_string is appended to endpoint in getAll and the result is stored in products in state.
    async getAllProducts() {
     let query_array = []
     let query_string = ""
