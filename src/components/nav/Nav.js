@@ -33,6 +33,7 @@ export default function Nav() {
             <ul className="nav-list">
                 <li className="nav-list-item"><NavLink activeClassName="active-link" to='/' exact>Home</NavLink></li>
                 <li className="nav-list-item"><NavLink activeClassName="active-link" to='/myaccount'>Profile</NavLink></li>
+                <li className="nav-list-item"><NavLink activeClassName="active-link" to='/search'>Search</NavLink></li>
                 <li className="nav-list-item"><NavLink activeClassName="active-link" to='/sell'>Sell</NavLink></li>
                 <li className="nav-list-item"><NavLink activeClassName="active-link" to='/myproducts'>My Products</NavLink></li>
                 <li className="nav-list-item"><NavLink activeClassName="active-link" to='/reports'>Reports</NavLink></li>

@@ -13,32 +13,45 @@ import CustomerEditForm from './home/CustomerEditForm'
 import ProductDetail from './home/ProductDetail'
 import { isAuthenticated } from './helpers/simpleAuth'
 import ProductTypeList from './home/ProductTypeList'
+import Search from "./home/Search";
 
 export default function ApplicationViews() {
-    return (
-        <>
-        
-           <Route exact path="/" render={props=> {
-               return <Home {...props} />
-           }}/>
-           <Route path="/orderproduct" render={props=> {
-                if (isAuthenticated()){
-                    return <OrderProductList {...props} />    
-               }
-               return <Redirect to="/login" />
-           }}/>
-           <Route path="/myproducts" render={props=> {
-                if (isAuthenticated()){
-               return <ProductList {...props} />
-                }
-                return <Redirect to="/login" />
-           }} />
-           <Route path="/products/:productId(\d+)" render={props=> {
-                    if (isAuthenticated()){
-               return <ProductDetail {...props} />
-                    }
-                    return <Redirect to="/login" />
-           }} />
+  return (
+    <>
+      <Route
+        exact
+        path="/"
+        render={props => {
+          return <Home {...props} />;
+        }}
+      />
+      <Route
+        path="/orderproduct"
+        render={props => {
+          if (isAuthenticated()) {
+            return <OrderProductList {...props} />;
+          }
+          return <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        path="/myproducts"
+        render={props => {
+          if (isAuthenticated()) {
+            return <ProductList {...props} />;
+          }
+          return <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        path="/products/:productId(\d+)"
+        render={props => {
+          if (isAuthenticated()) {
+            return <ProductDetail {...props} />;
+          }
+          return <Redirect to="/login" />;
+        }}
+      />
 
            <Route path="/orders" render={props=> {
                     if (isAuthenticated()){
@@ -86,6 +99,16 @@ export default function ApplicationViews() {
                }
                return <Redirect to="/login" />
            }} />
-        </>
-    )
+       
+      <Route
+        path="/search"
+        render={props => {
+          if (isAuthenticated()) {
+            return <Search {...props} />;
+          }
+          return <Redirect to="/login" />;
+        }}
+      />
+    </>
+  );
 }
