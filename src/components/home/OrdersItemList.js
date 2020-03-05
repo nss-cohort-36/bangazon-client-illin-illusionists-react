@@ -50,9 +50,9 @@ export default class OrdersList extends Component {
             this.state.orders.map(order => (
               <Order
                 key={order.id}
-                url={order.url}
-                created={order.created_at}
-                products={order.products}
+                order={order}
+                {...this.props}
+                getProductsForOrders={this.getProductsForOrders}
               />
             ))
           )}

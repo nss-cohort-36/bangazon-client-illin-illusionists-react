@@ -11,8 +11,8 @@ import ProductFormSell from './home/ProductFormSell'
 import NewPaymentType from './home/NewPaymentType'
 import CustomerEditForm from './home/CustomerEditForm'
 import ProductDetail from './home/ProductDetail'
-import OrderDetail from './home/OrderDetail'
 import { isAuthenticated } from './helpers/simpleAuth'
+import OrderCompletion from './home/OrderCompletion'
 
 export default function ApplicationViews() {
     return (
@@ -49,7 +49,7 @@ export default function ApplicationViews() {
 
            <Route path="/orders/:orderId(\d+)/complete" render={props=> {
               if (isAuthenticated()){
-                return <OrderDetail {...props} />
+                return <OrderCompletion orderId={parseInt(props.match.params.orderId)} {...props} />
               }
               return <Redirect to="/login" />
             }}/>
