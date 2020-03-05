@@ -1,17 +1,18 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import Home from "./home/Home";
-import OrderProductList from "./home/OrderProductList";
-import ProductList from "./home/ProductList";
-import OrdersItemList from "./home/OrdersItemList";
-import MyAccount from "./home/MyAccount";
-import Register from "./auth/Register";
-import Login from "./auth/Login";
-import ProductFormSell from "./home/ProductFormSell";
-import NewPaymentType from "./home/NewPaymentType";
-import CustomerEditForm from "./home/CustomerEditForm";
-import ProductDetail from "./home/ProductDetail";
-import { isAuthenticated } from "./helpers/simpleAuth";
+import React from 'react'
+import { Route, Redirect } from 'react-router-dom'
+import Home from './home/Home'
+import OrderProductList from './home/OrderProductList'
+import ProductList from './home/ProductList'
+import OrdersItemList from './home/OrdersItemList'
+import MyAccount from './home/MyAccount'
+import Register from './auth/Register'
+import Login from './auth/Login'
+import ProductFormSell from './home/ProductFormSell'
+import NewPaymentType from './home/NewPaymentType'
+import CustomerEditForm from './home/CustomerEditForm'
+import ProductDetail from './home/ProductDetail'
+import { isAuthenticated } from './helpers/simpleAuth'
+import ProductTypeList from './home/ProductTypeList'
 import Search from "./home/Search";
 
 export default function ApplicationViews() {
@@ -52,72 +53,58 @@ export default function ApplicationViews() {
         }}
       />
 
-      <Route
-        path="/orders"
-        render={props => {
-          if (isAuthenticated()) {
-            return <OrdersItemList {...props} />;
-          }
-          return <Redirect to="/login" />;
-        }}
-      />
-      {/* path to customer profile */}
-      <Route
-        path="/myaccount"
-        render={props => {
-          if (isAuthenticated()) {
-            return <MyAccount {...props} />;
-          }
-          return <Redirect to="/login" />;
-        }}
-      />
-
+           <Route path="/orders" render={props=> {
+                    if (isAuthenticated()){
+               return <OrdersItemList {...props} />
+                    }
+                    return <Redirect to="/login" />
+           }}/>
+           {/* path to customer profile */}
+           <Route path="/myaccount" render={props=> {
+                    if (isAuthenticated()){
+               return <MyAccount {...props} />
+                    }
+                    return <Redirect to="/login" />
+           }}/>
+            <Route path="/customers/:customerId(\d+)/edit" render={props => {
+                 if (isAuthenticated()){
+            return <CustomerEditForm {...props} />
+                 }
+                 return <Redirect to="/login" />
+            }}
+            />
+           
+           <Route path="/register" render={props => {
+               return <Register {...props} />
+           }}/>
+           <Route path="/login" render={props => {
+               return <Login {...props} />
+           }}/>
+           <Route path="/sell" render={props => {
+                if (isAuthenticated()){
+               return <ProductFormSell {...props} />
+                }
+                return <Redirect to="/login" />
+           }}/>
+           <Route path="/paymenttype/new" render={props => {
+               if (isAuthenticated()){
+               return <NewPaymentType {...props} />
+               }
+                return <Redirect to="/login" />
+               
+           }}/>
+           <Route path="/category/:productTypeId" render={props => {
+               if (isAuthenticated()){
+                return <ProductTypeList {...props} />
+               }
+               return <Redirect to="/login" />
+           }} />
+       
       <Route
         path="/search"
         render={props => {
           if (isAuthenticated()) {
             return <Search {...props} />;
-          }
-          return <Redirect to="/login" />;
-        }}
-      />
-
-      <Route
-        path="/customers/:customerId(\d+)/edit"
-        render={props => {
-          if (isAuthenticated()) {
-            return <CustomerEditForm {...props} />;
-          }
-          return <Redirect to="/login" />;
-        }}
-      />
-
-      <Route
-        path="/register"
-        render={props => {
-          return <Register {...props} />;
-        }}
-      />
-      <Route
-        path="/login"
-        render={props => {
-          return <Login {...props} />;
-        }}
-      />
-      <Route
-        path="/sell"
-        render={props => {
-          if (isAuthenticated()) {
-            return <ProductFormSell {...props} />;
-          }
-          return <Redirect to="/login" />;
-        }}
-      />
-      <Route
-        path="/paymenttype/new"
-        render={props => {
-          if (isAuthenticated()) {
-            return <NewPaymentType {...props} />;
           }
           return <Redirect to="/login" />;
         }}
