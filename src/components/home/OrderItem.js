@@ -30,7 +30,6 @@ export default class Order extends Component {
   }
 
   render() {
-    console.log("orderitem props", this.props);
     return (
       <div className="order-card">
         <div className="order-card-body">
