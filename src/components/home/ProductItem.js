@@ -7,9 +7,12 @@ export default function ProductItem(props) {
 
     return (
         <>
-          <p>{props.product.name}</p>   
-          <p>{props.product.quantity}</p>   
-          <p>{props.product.quantity}</p>   
+          <tr>
+            <td> {props.product.name}</td>
+            <td> {!isNaN(props.stats) ? props.product.quantity - props.stats : '...'}</td>
+            <td> {props.stats}</td>
+            <td><button onClick={() => props.deleteProduct(props.product.id)}>Delete</button></td>
+          </tr>
         </>
     )
 }
