@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import APIManager from "../helpers/APIManager";
 import PaymentList from "./PaymentList";
+import { Link } from "react-router-dom";
 
 const OrderDetail = props => {
   const [paymentTypes, setPaymentTypes] = useState([]);
@@ -11,12 +12,12 @@ const OrderDetail = props => {
   };
 
   const selectPaymentHandler = paymentId => {
-    const confirmation = window.confirm("Use this payment for the order?")
-    
+    const confirmation = window.confirm("Use this payment for the order?");
+
     if (confirmation) {
-      props.addPaymentToOrder(paymentId)
+      props.addPaymentToOrder(paymentId);
     }
-  }
+  };
 
   useEffect(() => {
     const getPaymentTypes = async () => {
@@ -27,8 +28,20 @@ const OrderDetail = props => {
 
   return (
     <div>
-      <h3>Select Payment Method</h3>
-      <PaymentList payments={paymentTypes} selectPayment={selectPaymentHandler} />
+      {paymentTypes.length > 0 ? (
+        <>
+          <h3>Select Payment Method</h3>
+          <PaymentList
+            payments={paymentTypes}
+            selectPayment={selectPaymentHandler}
+          />{" "}
+        </>
+      ) : (
+        <>
+          <h3>Add Payment Method</h3>
+          <Link to="/paymenttype/new">Add New Payment Type</Link>
+        </>
+      )}
     </div>
   );
 };

@@ -17,9 +17,11 @@ export default function Payment(props) {
             Use This Payment Method
           </button>
         )}
-        <button onClick={() => props.deletePayment(props.payment.id)}>
-          Delete
-        </button>
+        {props.deletePayment && (
+          <button onClick={() => props.deletePayment(props.payment.id)}>
+            Delete
+          </button>
+        )}
       </section>
     </React.Fragment>
   );
