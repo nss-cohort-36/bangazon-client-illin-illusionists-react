@@ -17,11 +17,11 @@ export default function ProductDetail(props) {
             .then(response => {
                 setProductDetail(response)
             })
-    }, [])
+    }, [props.match.params.productId])
 
     const AddItem = (id) => {
         APIManager.createNew('orderproducts/cart', {"product_id": id})
-        .then(() => history.push("/orders"))
+        .then(() => history.push("/cart"))
     }
 
     return (

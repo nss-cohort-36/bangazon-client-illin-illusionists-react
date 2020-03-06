@@ -55,7 +55,7 @@ export default function ApplicationViews() {
         }}
       />
 
-      <Route path="/orders" exact render={props=> {
+      <Route path="/cart" exact render={props=> {
         if (isAuthenticated()){
           return <OrdersItemList {...props} />
         }
