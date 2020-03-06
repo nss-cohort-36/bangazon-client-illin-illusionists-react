@@ -13,6 +13,7 @@ export default function PaymentList(props) {
                 key={payment.id}                
                 payment={payment}
                 deletePayment={props.deletePayment}
+                selectPayment={props.selectPayment}
               />)
           }
         </article>
