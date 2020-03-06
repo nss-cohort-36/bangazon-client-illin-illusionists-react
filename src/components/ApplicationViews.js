@@ -14,6 +14,8 @@ import ProductDetail from './home/ProductDetail'
 import { isAuthenticated } from './helpers/simpleAuth'
 import ProductTypeList from './home/ProductTypeList'
 import Search from "./home/Search";
+import OrderCompletion from './home/OrderCompletion'
+
 
 export default function ApplicationViews() {
   return (
@@ -53,12 +55,19 @@ export default function ApplicationViews() {
         }}
       />
 
-           <Route path="/orders" render={props=> {
-                    if (isAuthenticated()){
-               return <OrdersItemList {...props} />
-                    }
-                    return <Redirect to="/login" />
-           }}/>
+      <Route path="/cart" exact render={props=> {
+        if (isAuthenticated()){
+          return <OrdersItemList {...props} />
+        }
+          return <Redirect to="/login" />
+      }}/>
+
+      <Route path="/orders/:orderId(\d+)/complete" render={props=> {
+        if (isAuthenticated()){
+          return <OrderCompletion orderId={parseInt(props.match.params.orderId)} {...props} />
+        }
+        return <Redirect to="/login" />
+      }}/>
            {/* path to customer profile */}
            <Route path="/myaccount" render={props=> {
                     if (isAuthenticated()){
