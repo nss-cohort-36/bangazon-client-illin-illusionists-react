@@ -1,8 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const ReportsList = props => {
-  return <Link to="/reports/incomplete-orders">Incomplete Orders</Link>
-}
+  return (
+    <nav className="reports-link-container">
+      <Link to="/reports/incomplete-orders">Incomplete Orders</Link>
+    </nav>
+  );
+};
 
-export default ReportsList
+export default ReportsList;
