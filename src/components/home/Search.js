@@ -26,7 +26,9 @@ class Search extends Component {
     APIManager.getAll("products").then(response => {
       const newLocations = [];
       for (const item of response) {
-        newLocations.push(item.location);
+        if (item.location !== null) {
+            newLocations.push(item.location);
+        }
       }
       const uniqueLocations = [...new Set(newLocations)].sort();
       this.setState({
@@ -44,7 +46,7 @@ class Search extends Component {
 
 // handleChange captures value from drop-down menu and puts it in state.
   handleChange(event) {
-    console.log("Event", event);
+    // console.log("Event", event);
     this.setState({ location: event.target.value });
   }
 

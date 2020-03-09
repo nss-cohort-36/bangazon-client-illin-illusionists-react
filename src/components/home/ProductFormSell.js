@@ -46,13 +46,13 @@ export default function ProductFormSell() {
         const handleSubmit = event => {
             // console.log("handleSubmit is executing")
             event.preventDefault()
-            if (product && product.name && product.price && product.description && product.quantity && product.location && product.image_path && product.product_type_id) {
+            if (product && product.name && product.price && product.description && product.quantity && product.image_path && product.product_type_id) {
                 const newproduct = {
                     "name": product.name,
                     "price": Number(product.price),
                     "description": product.description,
                     "quantity": Number(product.quantity),
-                    "location": product.location,
+                    "location": product.location || null,
                     "image_path": product.image_path,
                     "product_type_id": Number(product.product_type_id)
                 }
@@ -105,7 +105,8 @@ export default function ProductFormSell() {
                             <label htmlFor="location">Location</label>
                             <input
                                 id="location"
-                                onChange={handleFieldChange} />
+                                onChange={handleFieldChange} /><br />
+                                (Leave blank if local delivery is not available)
                         </fieldset>
                         <fieldset>
                             <label htmlFor="image_path">Image Path</label>
