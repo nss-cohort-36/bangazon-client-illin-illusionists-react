@@ -13,6 +13,8 @@ import CustomerEditForm from './home/CustomerEditForm'
 import ProductDetail from './home/ProductDetail'
 import { isAuthenticated } from './helpers/simpleAuth'
 import ProductTypeList from './home/ProductTypeList'
+import ReportsList from './home/ReportsList'
+import OrdersOpenList from './home/OrdersOpenList'
 import Search from "./home/Search";
 import OrderCompletion from './home/OrderCompletion'
 
@@ -54,6 +56,20 @@ export default function ApplicationViews() {
           return <Redirect to="/login" />;
         }}
       />
+
+      <Route path="/reports" render={props=> {
+        if (isAuthenticated()){
+          return <ReportsList {...props} />
+        }
+          return <Redirect to="/login" />
+      }}/>
+
+      <Route path="/reports/incomplete-orders" exact render={props=> {
+        if (isAuthenticated()){
+          return <OrdersOpenList {...props} />
+        }
+          return <Redirect to="/login" />
+      }}/>
 
       <Route path="/cart" exact render={props=> {
         if (isAuthenticated()){
