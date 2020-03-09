@@ -28,6 +28,14 @@ export default {
         })
     .then(response => response.json())
     },
+    getAllNoAuth(endpoint){
+        return fetch(`${Settings.remote_URL}/${endpoint}`, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+    .then(response => response.json())
+    },
     getOne(endpoint, id) {
         return fetch(`${Settings.remote_URL}/${endpoint}/${id}`, {
 

@@ -119,10 +119,10 @@ export default function ApplicationViews() {
                
            }}/>
            <Route path="/category/:productTypeId" render={props => {
-               if (isAuthenticated()){
+              //  if (isAuthenticated()){
                 return <ProductTypeList {...props} />
-               }
-               return <Redirect to="/login" />
+              //  }
+              //  return <Redirect to="/login" />
            }} />
        
       <Route

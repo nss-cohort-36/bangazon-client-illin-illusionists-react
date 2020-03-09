@@ -19,7 +19,7 @@ export default function Nav() {
     const [categories, setCategories] = useState([])
 
     const getProductCategories = () => {
-        APIManager.getAll("producttypes")
+        APIManager.getAllNoAuth("producttypes")
         .then(response => setCategories(response))
     }
 
