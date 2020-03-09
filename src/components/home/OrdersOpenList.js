@@ -24,8 +24,8 @@ const OrdersOpenList = props => {
       <h2>Customers with open orders</h2>
       {openOrders.map(order => (
         <div key={order.id} className="incomplete-order-customer-container">
-          <h3 className="incomplete-order-customer-name">
-            {order.customer.user.first_name} {order.customer.user.last_name}
+          <h3 className="incomplete-order-customer-order">
+            {order.customer.user.first_name} {order.customer.user.last_name} - Order #{order.id}
           </h3>
           <ol className="incomplete-orders-product-list">
             {order.cart.map(item => (
