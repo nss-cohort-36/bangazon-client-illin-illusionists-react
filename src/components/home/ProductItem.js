@@ -11,7 +11,7 @@ export default function ProductItem(props) {
             <td> {props.product.name}</td>
             <td> {!isNaN(props.stats) ? props.product.quantity - props.stats : '...'}</td>
             <td> {props.stats}</td>
-            <td><button onClick={() => props.deleteProduct(props.product.id)}>Delete</button></td>
+            <td><button onClick={() => props.deleteProduct(props.product.id || props.orderProductId)}>Delete</button></td>
           </tr>
         </>
     )
