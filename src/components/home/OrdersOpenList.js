@@ -28,8 +28,8 @@ const OrdersOpenList = props => {
             {order.customer.user.first_name} {order.customer.user.last_name} - Order #{order.id}
           </h3>
           <ol className="incomplete-orders-product-list">
-            {order.cart.map(item => (
-              <li>{item.product.name}</li>
+            {order.cart.map((item, index) => (
+              <li key={index}>{item.product.name}</li>
             ))}
           </ol>
         </div>
