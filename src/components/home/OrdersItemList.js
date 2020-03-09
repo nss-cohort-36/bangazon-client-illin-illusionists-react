@@ -30,12 +30,12 @@ export default class OrdersList extends Component {
         }
       );
       const productsInOrder = await productsInOrderResponse.json();
-      order["products"] = productsInOrder.map(
-        productInOrder => productInOrder.product
-      );
+      order["orderProducts"] = productsInOrder
     }
     this.setState({ orders: ordersWithProducts });
   };
+
+  
 
   render() {
     return (
@@ -54,6 +54,7 @@ export default class OrdersList extends Component {
                 {...this.props}
                 getProductsForOrders={this.getProductsForOrders}
               />
+
             ))
           )}
         </div>
