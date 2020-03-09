@@ -3,6 +3,7 @@ import "./OrderItem.css";
 import ProductItem from "./ProductItem";
 import OrderDetail from "./OrderDetail";
 import Settings from "../helpers/Settings";
+import APIManager from "../helpers/APIManager"
 
 export default class Order extends Component {
   state = {
@@ -24,10 +25,11 @@ export default class Order extends Component {
     this.props.history.push(`/orders/${this.props.order.id}/complete`)
   };
 
-  deleteProductHandler = () => {
+  deleteProductHandler = (id) => {
     this.setState({hidePayment: true})
-    console.log("TODO: Delete from orderproduct table")
-  }
+    
+    APIManager.deleteOne("orderproducts", id)
+    .then(()=> this.props.getProductsForOrders())}   
 
   render() {
     return (
@@ -38,11 +40,12 @@ export default class Order extends Component {
             {this.props.order.created_at}
           </p>
           <table>
-            {this.props.order.products.map((product, index) => (
+            {this.props.order.orderProducts.map((orderProduct, index) => (
               <tbody key={index}>
                 <ProductItem
                   deleteProduct={this.deleteProductHandler}
-                  product={product}
+                  product={orderProduct.product}
+                  orderProductId={orderProduct.id}
                 />
               </tbody>
             ))}
