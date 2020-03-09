@@ -10,9 +10,9 @@ export default function Home() {
 
     const getProductList = () => {
         if (isAuthenticated()) {
-            APIManager.getAll('products?limit=20')
-                .then(setProductList)
-
+            APIManager.getAll('products?limit=20').then(setProductList)
+        } else {
+            APIManager.getAllNoAuth('products?limit=20').then(setProductList)
         }
     };
 

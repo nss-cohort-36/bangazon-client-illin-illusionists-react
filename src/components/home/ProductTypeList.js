@@ -10,7 +10,7 @@ export default function ProductTypeList(props) {
 
     const getProducts = () => {
         console.log("function runs")
-        APIManager.getAll(`products?category=${props.match.params.productTypeId}`)
+        APIManager.getAllNoAuth(`products?category=${props.match.params.productTypeId}`)
         .then(response => setproductType(response))
     }
 
