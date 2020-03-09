@@ -1,0 +1,17 @@
+.reports-link-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.incomplete-orders-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.incomplete-orders-product-list {
+  display: flex;
+  flex-direction: column;
+}
